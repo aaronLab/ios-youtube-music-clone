@@ -13,16 +13,20 @@ struct Album {
     let imageFileName: String
 }
 
+extension Album: Identifiable {
+    var id: UUID { UUID() }
+}
+
 extension Album {
-    
+
     static func getAll() -> [Album] {
         return [
-            Album(title: "Courage To Change", singer: "Sia", imageFileName: "courageToChange.jpg"),
-            Album(title: "Dua Lipa (Complete Edition)", singer: "Dua Lipa", imageFileName: "duaLipaCompleteEdition.jpg"),
-            Album(title: "Future Nostalgia", singer: "Dua Lipa", imageFileName: "futureNostalgia.jpg"),
-            Album(title: "Riding on My Bike", singer: "Sia", imageFileName: "ridingOnMyBike.jpg"),
-            Album(title: "Together", singer: "Sia", imageFileName: "together.jpg")
+            Album(title: "Courage To Change", singer: "Sia", imageFileName: "courageToChange"),
+            Album(title: "Dua Lipa (Complete Edition)", singer: "Dua Lipa", imageFileName: "duaLipaCompleteEdition"),
+            Album(title: "Future Nostalgia", singer: "Dua Lipa", imageFileName: "futureNostalgia"),
+            Album(title: "Riding on My Bike", singer: "Sia", imageFileName: "ridingOnMyBike"),
+            Album(title: "Together", singer: "Sia", imageFileName: "together")
         ]
     }
-    
+
 }

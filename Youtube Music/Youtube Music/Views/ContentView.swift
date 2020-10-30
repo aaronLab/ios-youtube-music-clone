@@ -23,7 +23,9 @@ struct ContentView: View {
                         
                         VStack {
                             
-                            favourites
+                            Favourites()
+                            
+                            Albums()
                             
                         }
                         
@@ -69,40 +71,6 @@ struct ContentView: View {
             .navigationBarColor(.systemGray)
         }
     }
-}
-
-extension ContentView {
-    
-    var favourites: some View {
-        
-        VStack(alignment: .leading) {
-            
-            Text("Your favourites")
-                .foregroundColor(.white)
-                .font(.system(size: 25, weight: .heavy, design: .default))
-                .padding(16)
-                .padding(.top, 16)
-            
-            singers
-            
-        }
-        
-    }
-    
-    var singers: some View {
-        
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(viewmodel.singers, id: \.id) { singer in
-                    ItemCell(imageFileName: singer.imageFileName,
-                             title: singer.name,
-                             subtitle: "\(Double(singer.subscribers).kmFormatted) subscribers")
-                        .padding(16)
-                }
-            }
-        }
-    }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -12,6 +12,9 @@ struct ItemCell: View {
     let title: String
     let subtitle: String
     
+    let imageSize: CGFloat
+    let cornerRadius: CGFloat
+    
     var body: some View {
         
         VStack {
@@ -19,8 +22,8 @@ struct ItemCell: View {
             Image(imageFileName)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 150, height: 150, alignment: .center)
-                .cornerRadius(150 / 2)
+                .frame(width: imageSize, height: imageSize, alignment: .center)
+                .cornerRadius(cornerRadius)
             
             Text(title)
                 .foregroundColor(.white)
@@ -37,7 +40,7 @@ struct ItemCell: View {
 
 struct ItemCell_Previews: PreviewProvider {
     static var previews: some View {
-        ItemCell(imageFileName: "chainSmokers", title: "Chain Smokers", subtitle: "1.2M")
+        ItemCell(imageFileName: "chainSmokers", title: "Chain Smokers", subtitle: "1.2M", imageSize: 150, cornerRadius: 150 / 2)
             .background(Color.black)
     }
 }
