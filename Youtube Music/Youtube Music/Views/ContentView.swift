@@ -8,14 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    private let viewmodel = FavouritesViewModel()
+    
     var body: some View {
         NavigationView {
 
             GeometryReader { geometry in
+                
+                ScrollView {
+                    
+                    ZStack {
+                        
+                        
+                        VStack {
+                            
+                            favourites
+                            
+                        }
+                        
+                        
+                    }.frame(width: geometry.size.width, alignment: .leading)
+                    
+                }.background(Color.black)
 
-                ZStack {
-                    Text("Hello")
-                }
 
             }
 
@@ -50,14 +66,42 @@ struct ContentView: View {
                             
                     }
                 )
-                .navigationBarColor(.darkGray)
+            .navigationBarColor(.systemGray)
         }
     }
 }
 
 extension ContentView {
     
+    var favourites: some View {
+        
+        VStack(alignment: .leading) {
+            
+            Text("Your favourites")
+                .foregroundColor(.white)
+                .font(.system(size: 25, weight: .heavy, design: .default))
+                .padding(16)
+                .padding(.top, 16)
+            
+            singers
+            
+        }
+        
+    }
     
+    var singers: some View {
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(viewmodel.singers, id: \.id) { singer in
+                    ItemCell(imageFileName: singer.imageFileName,
+                             title: singer.name,
+                             subtitle: "\(Double(singer.subscribers).kmFormatted) subscribers")
+                        .padding(16)
+                }
+            }
+        }
+    }
     
 }
 
